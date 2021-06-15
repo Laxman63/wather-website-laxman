@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
-const port = process.env.PORT 
+const port = process.env.PORT || 3000 
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/whetherapi')
 
@@ -72,7 +72,8 @@ app.get('/weather',(req,res)=>{
             }
             res.send({
                 forecast: forcastData,
-                location: location
+                location: location,
+                address:req.query.address
                
                 
             })
